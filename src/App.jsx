@@ -1,6 +1,3 @@
-// src/App.jsx: Single-page landing (no reusable components)
-// NOTE: All text/images are placeholders. Replace with real content when ready.
-
 import React from 'react'
 
 import { Zap } from 'lucide-react';
