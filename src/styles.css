@@ -1,0 +1,504 @@
+/* src/styles.css */
+/* Theme & variables: white background, black text, blue + purple/pink accents */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #121212;
+  --color-muted: #6b7280; /* secondary text */
+  --color-primary: #2563eb; /* blue */
+  --color-accent-1: #7c3aed; /* purple */
+  --color-accent-2: #db2777; /* pink */
+  --color-accent-3: #3b82f6; /* light blue */
+  --shadow-soft: 0 8px 24px rgba(16, 24, 40, 0.08);
+  --border-soft: rgba(16, 24, 40, 0.08);
+}
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  scroll-behavior: smooth;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background-color: #dce4f3;
+    border-radius: 12px;
+    padding-left: 50px;
+    padding-right: 50px;
+    max-width: 1500px;
+    width: 95%;
+}
+
+.nav-bar img {
+  width: 30px;
+  height: auto;
+}
+
+section#hero {
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    min-height: 950px;
+    width: 95%;
+    padding-top: 30px;
+}
+
+section#hero h1 {
+    max-width: 850px;
+    color: rgb(46, 46, 46);
+}
+
+section#hero p {
+  line-height: 25px;
+}
+
+section#hero h5 {
+    max-width: 850px;
+    color: rgb(46, 46, 46);
+}
+
+section#hero .placeholder-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 3px solid rgb(137, 160, 223);
+}
+
+section#hero .placeholder-profile .img-1 {
+  width: 40px;
+  height: 40px;
+  margin-right: -20px;
+  z-index: 3;
+}
+section#hero .placeholder-profile .img-2 {
+  width: 35px;
+  height: 35px;
+  z-index: -3;
+}
+
+section#hero .placeholder-profile h6 {
+  color: rgb(47, 52, 70);
+  font-size: 16px;
+}
+
+/* Hierarchy: Big headings, ample white space */
+.display-heading {
+  /* Large, responsive type using clamp */
+  font-size: 90px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* Extra bold utility */
+.fw-extrabold {
+  font-weight: 800;
+}
+
+@media (max-width: 690px) {
+  .display-heading {
+    /* Large, responsive type using clamp */
+    font-size: 70px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+}
+@media (max-width: 520px) {
+  .display-heading {
+    /* Large, responsive type using clamp */
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    width: 110%;
+    max-width: 110%;
+  }
+  section#hero {
+    min-height: 690px;
+    padding-top: 60px;
+    width: 95%;
+  }
+  section#hero p {
+    line-height: 18px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  section#hero .placeholder-profile h6 {
+    font-size: 15px;
+    text-align: left;
+  }
+}
+
+
+.feature-section h2 {
+  font-size: 50px;
+  line-height: 1.1;
+  font-family: Lexend Deca;
+}
+
+.feature-section p {
+  color: var(--color-muted);
+  font-size: 17px;
+}
+
+.feature-section img {
+  max-width: 580px;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 930px) {
+  .feature-section h2 {
+    font-size: 35px;
+  }
+}
+@media (max-width: 700px) {
+  .feature-section h2 {
+    font-size: 25px;
+    text-align: center;
+  }
+  .feature-section p {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  .feature-section img {
+    margin-top: -50px;
+    width: 116%;
+    height: auto;
+  }
+}
+
+.body-text {
+  font-size: clamp(1rem, 0.6vw + 0.8rem, 1.125rem);
+  color: var(--color-text);
+}
+
+/* Accent utilities */
+.bg-accent {
+  background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2), var(--color-accent-3));
+}
+
+.bg-soft-accent {
+  background: rgba(37, 99, 235, 0.12); /* soft blue tint */
+}
+
+/* Soft shadow and clean card look */
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+}
+
+/* Global spacing between vertical sections */
+.my-section-spacing {
+    max-width: 1300px;
+    width: 95%;
+    justify-self: center;
+}
+
+/* Hero specific */
+.hero-section .waitlist-form input {
+  /* Larger inputs emphasize primary action */
+  padding: 0.9rem 1rem;
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+}
+
+/* Visual placeholder styling */
+.placeholder-visual {
+  max-width: 640px;
+}
+
+/* Bullet dot for lists */
+.bullet-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+  transform: translateY(6px);
+}
+
+/* Buttons: hover effects and hierarchy */
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #1e40af; /* darker blue */
+  border-color: #1e40af;
+}
+
+.btn-outline-primary {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Inputs: subtle focus */
+.form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
+}
+
+/* Utility tweaks for spacing on small screens */
+@media (max-width: 576px) {
+  .waitlist-form .btn {
+    margin-top: 0.25rem;
+  }
+}
+
+section#waitlist {
+  padding-bottom: 60px;
+}
+
+section#waitlist h2 {
+  max-width: 1300px;
+  justify-self: center;
+    font-size: 70px;
+    font-weight: 800;
+}
+
+section#waitlist h5 {
+    background-image: linear-gradient(20deg, rgba(178, 196, 245, 0.568), rgba(184, 171, 231, 0.562));
+    max-width: 860px;
+    justify-self: center;
+    padding: 12px 30px;
+    font-size: 16px;
+    margin-top: 30px;
+    border-radius: 12px;
+}
+
+section#waitlist .bullets-container {
+  max-width: 1300px;
+  width: 96%;
+}
+
+section#waitlist .bullets-container img {
+  width: 100%;
+  height: auto;
+}
+
+section#waitlist .bullets-container .bullet-card {
+  background-color: #EEF2FF;
+  border-radius: 14px;
+  padding: 10px 20px;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+  margin-bottom: 24px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+section#waitlist .bullets-container .bullet-card .icon {
+  width: 100%;
+  max-width: 50px;
+  height: auto;
+}
+
+section#waitlist .bullets-container .bullet-card .content {
+  display: flex;
+  margin-left: 10px;
+  align-items: start;
+  justify-content: center;
+  justify-self: center;
+  flex-direction: column;
+}
+section#waitlist .bullets-container .bullet-card h3 {
+  font-size: 18px;
+  color: rgb(20, 26, 48);
+  font-weight: bold;
+}
+section#waitlist .bullets-container .bullet-card h5 {
+  font-size: 16px;
+}
+
+@media (max-width: 830px) {
+  section#waitlist h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 520px) {
+  section#waitlist h2 {
+    font-size: 35px;
+  }
+  section#waitlist .bullets-container .bullet-card {
+    width: 120%;
+    justify-self: center;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+  }
+  section#waitlist .bullets-container .bullet-card h3 {
+    font-size: 16px;
+  }
+  section#waitlist .bullets-container .bullet-card h5 {
+    font-size: 15px;
+  }
+}
+
+
+.waitlist-form-page {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-image: linear-gradient(to bottom, rgb(221, 235, 255), white);
+}
+
+.waitlist-form-page h1{
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 100px;
+    text-align: center;
+}
+
+.waitlist-form-page h5{
+    color: gray;
+    max-width: 800px;
+    font-weight: 400;
+}
+
+.waitlist-form-page .form-container {
+    min-height: 90px;
+    max-width: 540px;
+    width: 95%;
+}
+
+.waitlist-email-input {
+    max-width: 380px;
+    height: 100%;
+    width: 100%;
+    height: 56px;
+    padding: 0 18px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0f172a; /* near-black */
+    background-color: #d3dce9;
+    border: 1px solid #e5e7eb; /* soft gray */
+    border-radius: 14px 0px 0px 14px;
+    outline: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.waitlist-email-input::placeholder {
+    color: #5f6e81; /* subtle slate */
+    font-weight: 400;
+}
+
+.waitlist-email-input:focus {
+    border-color: #6366f1; /* indigo */
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.join-btn {
+    height: 56px;
+    padding: 0 26px;
+    font-size: 16px;
+    max-width: 200px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #6366f1,#8b5cf6);
+    border: none;
+    border-radius: 0px 14px 14px 0px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.25);
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+
+.join-btn:hover {
+    background: linear-gradient(135deg, #6366f1,#8b5cf6);
+    box-shadow: 0 0px 28px rgba(64, 65, 146, 0.76);
+}
+
+.join-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.25);
+}
+
+.sharing-btn {
+  background-color: white;
+  border: 2px solid rgb(48, 128, 248);
+  padding: 15px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.sharing-btn:hover {
+  background-color: rgb(48, 128, 248);
+}
+
+.sharing-btn:hover .share-icon{
+  color: white;
+}
+
+.sharing-btn .share-icon{
+  color: rgb(34, 130, 255);
+  width: 32px;
+  height: auto;
+}
+
+@media (max-width: 420px) {
+  .sharing-btn {
+    background-color: white;
+    border: 2px solid rgb(48, 128, 248);
+    padding: 5px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  
+  .sharing-btn .share-icon{
+    color: rgb(34, 130, 255);
+    width: 28px;
+    height: auto;
+  }
+}
+
+@media (max-width: 830px) {
+  .waitlist-form-page h1{
+    font-size: 70px;
+  }
+  .waitlist-form-page h5{
+     width: 93%;
+     font-size: 16px;
+  }
+}
+@media (max-width: 520px) {
+  .waitlist-form-page h1{
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .join-btn {
+    height: 44px;
+  }
+  .waitlist-email-input {
+    height: 44px;
+  }
+}
+
+/* Clean link styles in nav/footer */
+.nav-link {
+  font-weight: 600;
+}
+
+footer a {
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
