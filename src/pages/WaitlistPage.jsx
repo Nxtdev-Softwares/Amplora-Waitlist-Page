@@ -9,17 +9,32 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
+import { ChartColumn } from 'lucide-react';
+import { HandCoins } from 'lucide-react';
+import { Rocket } from 'lucide-react';
+import { Check } from 'lucide-react';
+import { Lightbulb } from 'lucide-react';
+import { Compass } from 'lucide-react';
+import { ChartLine } from 'lucide-react';
+import { FishingHook } from 'lucide-react';
+import { ThumbsUp } from 'lucide-react';
 
 import amploraLogo from '../assets/amploraLogo.svg'
+import ProfileLois from '../assets/Lois.jpg'
+import ProfileKevvin from '../assets/Kevvin.jpg'
 import Kevvin from '../assets/Kevvin.jpg'
 import Lois from '../assets/Lois.jpg'
-import bulletContentUI from '../assets/bulletContentUI.png'
+import FeatureIcon1 from '../assets/Kevvin.jpg'
+import FeatureIcon2 from '../assets/Kevvin.jpg'
+import FeatureIcon3 from '../assets/Kevvin.jpg'
+import ScrollReveal from '../components/ScrollReveal'
 
-import postBreakdownUi from '../assets/postBreakdownUi.png'
-import contentUi from '../assets/contentPlanUi.png'
-import WhatsWorkingUi from '../assets/WhatsWorkingUi.png'
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
+
+const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+`;
 
 function WaitlistPage() {
 
@@ -36,8 +51,8 @@ function WaitlistPage() {
 
   const IS_TEST_MODE = false;
 
-  const waitlistMembers = 15;
-  const joinedNumber = 3;
+  const waitlistMembers = 14;
+  const joinedNumber = 6;
 
   const isValidEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -141,6 +156,33 @@ function WaitlistPage() {
     };
   }, []);
 
+  const featuresRef = useRef(null);
+
+  const handleScrollFeatures = (e) => {
+    e.preventDefault();
+    featuresRef.current.scrollIntoView({behavior: "smooth"});
+  }
+
+  const waitlistRef = useRef(null);
+
+  const handleScrollWaitlist = (e) => {
+    e.preventDefault();
+    waitlistRef.current.scrollIntoView({behavior: "smooth"});
+  }
+
+  const waitlistCtaRef = useRef(null);
+
+  const handleScrollWaitlistCta = (e) => {
+    e.preventDefault();
+    waitlistCtaRef.current.scrollIntoView({behavior: "smooth"});
+  }
+
+  const waitlistSectionRef = useRef(null);
+
+  const scrollToSection = () => {
+    waitlistSectionRef.current.scrollIntoView({behavior: "smooth"})
+  }
+
   return (
     <>
       <meta
@@ -155,152 +197,375 @@ function WaitlistPage() {
       Marketing Agency, Marketing automation platform, Amplora Marketing Automation Tool"
       />
 
-    <div className="app-wrapper bg-white text-dark">
-      {/* Global spacing helpers */}
-      <header className="nav-bar py-4 d-md-grid d-none">
-        {/* Placeholder for logo and simple nav */}
-        <div className="d-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center gap-2">
-            {/* Placeholder logo mark */}
-            <img src={amploraLogo} alt="" />
-            <span className="">Amplora</span>
-          </div>
-          <nav className="d-none d-md-flex align-items-center gap-4">
-            {/* Placeholder nav links */}
-            <a href="#features" className="the-nav-link d-none d-md-flex">Features</a>
-            <a href="#waitlist" className="the-nav-link d-none d-md-flex">Waitlist</a>
-            <a href="#contact" className="the-nav-link d-none d-md-flex">Contact</a>
-            <a href="#waitlist-cta" className="d-none d-md-flex"  style={{textDecoration: "none"}}>
-              <button className='cta'>Join Now</button>
-            </a>
-          </nav>
-        </div>
-      </header>
+    <main className="waitlist-page">
 
-      <div className="nav-bar d-flex d-md-none d-flex justify-content-center align-items-center">
-        <div className="d-flex align-items-center gap-2 justify-content-center">
-            {/* Placeholder logo mark */}
-            <img src={amploraLogo} alt="" />
-            <span className="">Amplora</span>
+      <style>{styles}</style>
+      <div className="hero-root">
+        {/* Background */}
+        <div className="grid-bg" />
+        <div className="orb orb-blue" />
+        <div className="orb orb-purple" />
+        <div className="orb orb-blue2" />
+
+        {/* Nav */}
+        <nav className="nav">
+          <div className="nav-logo">
+            <img className='amplora-nav-logo' src={amploraLogo} alt="" />
+            Amplora
           </div>
+          <div className="nav-pill">✦ Early Access Open</div>
+        </nav>
+
+        {/* Hero Content */}
+        <div className="hero-wrap">
+          <div className="eyebrow">
+            <span className="eyebrow-dot" />
+            Built for coaches who create content
+          </div>
+
+          <h1 className="heading">
+            Your Content Works.
+            <span className="heading-line2"> Your Pipeline Doesn't.</span>
+          </h1>
+
+          <p className="subheading">
+            Amplora connects your content to your clients — showing you <strong>exactly which posts drive inquiries,</strong> not just vanity metrics. Stop guessing. Start growing.
+          </p>
+
+          <div className="d-flex justify-content-center align-items-center" style={{maxWidth: "520px", width: "95%", justifySelf: "center"}}>
+            <form onSubmit={handleSubmit} className="form-input d-flex justify-content-center align-items-center " style={{maxWidth: "520px", width: "95%"}}>
+              
+              {error && <p className="error-text">{error}</p>}
+
+              <input type="text" placeholder='Enter email here...' className='waitlist-email-input d-flex d-md-none'
+              value={email} onChange={(e) => {setEmail(e.target.value); setError(""); }} required/>
+
+              <input type="text" placeholder='Enter your email here...' className='waitlist-email-input d-none d-md-flex'
+              value={email} onChange={(e) => {setEmail(e.target.value); setError(""); }} required/>
+
+              <button className='join-btn' type="submit">
+                {isSubmitting ? "Submitting..." : "Join Now"}
+              </button>
+            </form>
+          </div>
+
+          {/* Social Proof */}
+          <div className="social-proof">
+            <div className="avatars">
+              <div className="d-flex placeholder-profile mt-3 align-items-center gap-2 justify-content-center">
+                <div className="" style={{minWidth: "57px"}}>
+                  <img src={Kevvin} alt="" className='img-1'/>
+                  <img src={Lois} alt="" className='img-2'/>
+                </div>
+              </div>
+            </div>
+            <div className="proof-text">
+              <div className="stars">★★★★★</div>
+              <div><strong>{joinedNumber}+ coaches</strong> already on the waitlist</div>
+            </div>
+          </div>
+        </div>
+
+        <span className="divider-text">Scroll to see how Amplora works</span>       
+
       </div>
 
-      {/* Hero Section */}
-      <section id="hero" className="hero-section  d-flex align-items-center justify-content-center flex-column">
-          {/* Left: headline + subheadline + paragraph + waitlist input */}
-            {/* Big bold heading */}
-            <h1 className="display-heading fw-extrabold mb-3">
-              Stop guessing what content <span style={{color: "#4F6BFF"}}>works.</span>
-            </h1>
-            {/* Body paragraph */}
-            <h5 className="body-text mb-2">
-              See exactly which posts turn followers into high-ticket clients.
-            </h5>
-            <p className="mb-3 d-flex text-center justify-content-center">
-              Built for coaches who want predictable leads - not viral luck.
-            </p>
-            {/* Waitlist form (front-end only, no backend logic) */}
-             <div className="d-flex justify-content-center align-items-center mt-4 mt-md-5 mb-2" style={{maxWidth: "520px", width: "95%"}}>
-              <form onSubmit={handleSubmit} className="form-input d-flex justify-content-center align-items-center " style={{maxWidth: "520px", width: "95%"}}>
-                
-                {error && <p className="error-text">{error}</p>}
+      {/* Pain + Problem Section */}
+      <div className="pain-root">
+        <div className="pain-bg" />
 
-                <input type="text" placeholder='Enter email here...' className='waitlist-email-input d-flex d-md-none'
-                value={email} onChange={(e) => {setEmail(e.target.value); setError(""); }} required/>
+        <div className="pain-section">
 
-                <input type="text" placeholder='Enter your email here...' className='waitlist-email-input d-none d-md-flex'
-                value={email} onChange={(e) => {setEmail(e.target.value); setError(""); }} required/>
-
-
-                <button className='join-btn' type="submit">
-                  {isSubmitting ? "Submitting..." : "Join Now"}
-                </button>
-              </form>
-            </div>
-            {/* Social proof placeholder */}
-            <div className="d-flex placeholder-profile mt-3 align-items-center gap-2 ms-2 ms-md-0">
-              <div className="" style={{minWidth: "57px"}}>
-                <img src={Kevvin} alt="" className='img-1'/>
-                <img src={Lois} alt="" className='img-2'/>
+          {/* ── HEADER ── */}
+          <div className="pain-header">
+            <div className="pain-eyebrow">⚡ The Real Problem</div>
+            <ScrollReveal className='move-down-anime'>
+              <div className="pain-heading">
+                Sound <span className="accent">Familiar?</span>
               </div>
-              <h6>Kevvin, Lois + {joinedNumber} more joined · {waitlistMembers} spots left</h6>
+            </ScrollReveal>
+            <p className="pain-subheading">
+              You're not failing at content. You're <strong>flying blind</strong> without the data that actually matters.
+            </p>
+          </div>
+
+          {/* ── CARDS ── */}
+          <div className="cards-grid" style={{maxWidth: "1300px", marginLeft: "auto", marginRight: "auto"}}>
+
+            {/* Card 1 */}
+            <div className="pain-card card-blue">
+              <div className="card-deco" style={{ background: "#2563EB" }} />
+              <div className="card-top">
+                <div className="card-icon icon-blue">🎲</div>
+                <span className="card-num">/ 01</span>
+              </div>
+              <div className="card-tag tag-blue">Hit-or-Miss</div>
+              <div className="card-title">The Roulette Problem</div>
+              <p className="card-body">
+                One post blows up. The next gets <strong>47 views</strong>. You have no idea why — so you can't repeat it, and you can't stop the flops.
+              </p>
+              <div className="card-stat">
+                <div className="stat-dot dot-red" />
+                <span className="stat-text">80% of posts generate zero client inquiries</span>
+              </div>
             </div>
-            
+
+            {/* Card 2 */}
+            <div className="pain-card card-purple">
+              <div className="card-deco" style={{ background: "#7c3aed" }} />
+              <div className="card-top">
+                <div className="card-icon icon-purple">🦗</div>
+                <span className="card-num">/ 02</span>
+              </div>
+              <div className="card-tag tag-purple">Low Engagement</div>
+              <div className="card-title">Crickets With Extra Steps</div>
+              <p className="card-body">
+                You filmed, edited, posted. Instagram showed it to <strong>90 people</strong>. Two liked it. Zero DMed. And tomorrow you have to do it all again.
+              </p>
+              <div className="card-stat">
+                <div className="stat-dot dot-orange" />
+                <span className="stat-text">Avg. organic reach dropped to ~2–3% by 2025</span>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="pain-card card-blue">
+              <div className="card-deco" style={{ background: "#2563EB" }} />
+              <div className="card-top">
+                <div className="card-icon icon-blue">🔥</div>
+                <span className="card-num">/ 03</span>
+              </div>
+              <div className="card-tag tag-blue">Wasted Effort</div>
+              <div className="card-title">You've Tried Everything</div>
+              <p className="card-body">
+                New hooks. Trending audio. Boosted posts. You're not lazy — you're <strong>optimizing blind</strong>. Without data, "testing" is just expensive hoping.
+              </p>
+              <div className="card-stat">
+                <div className="stat-dot dot-amber" />
+                <span className="stat-text">Most coaches can't trace a single client to a specific post</span>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="pain-card card-purple">
+              <div className="card-deco" style={{ background: "#7c3aed" }} />
+              <div className="card-top">
+                <div className="card-icon icon-purple">🌫️</div>
+                <span className="card-num">/ 04</span>
+              </div>
+              <div className="card-tag tag-purple">No Clarity</div>
+              <div className="card-title">Consistent. But Confused.</div>
+              <p className="card-body">
+                You show up every week. You teach real value. But <strong>which post brought your last client?</strong> You genuinely don't know. That's the problem.
+              </p>
+              <div className="card-stat">
+                <div className="stat-dot dot-gray" />
+                <span className="stat-text">Coaches who track conversions 3× their client acquisition</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* ── FOOTER BLOCK ── */}
+          <div className="pain-footer" style={{maxWidth: "1300px", marginRight: "auto", marginLeft: "auto"}}>
+            <div className="footer-glow-1" />
+            <div className="footer-glow-2" />
+            <div className="footer-grid" />
+
+            <div className="footer-left">
+              <div className="footer-kicker">The bottom line</div>
+              <div className="footer-headline">
+                Posting more won't fix this.<br />
+                Posting <span className="footer-accent">smarter</span> will.
+              </div>
+              <p className="footer-sub">
+                The coaches winning right now aren't creating more content — they know <strong>exactly which content converts</strong>, and they double down on it. Amplora gives you that clarity.
+              </p>
+            </div>
+
+            <div className="footer-right">
+              <button className="footer-cta" onClick={scrollToSection}>
+                Get Early Access →
+              </button>
+              <div className="footer-note">No credit card · Free during beta</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <section className="amplora-section fade-in">
+        <div className="pain-eyebrow">🤖 WHAT IT CAN DO</div>
+        <div className="section-header">
+          <ScrollReveal className='move-down-anime'>
+            <h2>What <span className="accent-blue">Amplora</span> Does</h2>
+          </ScrollReveal>
+          <p className="section-subheading mb-5">
+            Clarity over noise. Strategy over guesswork.
+          </p>
+        </div>
+
+        <div className="cards-container">
+
+          <div className="card">
+            <div className="icon-wrapper">
+              <ChartLine/>
+            </div>
+            <h3>Reveal Buying Intent</h3>
+            <p>
+              Identify which posts attract real clients, not just likes or empty engagement.
+            </p>
+          </div>
+
+          <div className="card">
+            <div className="icon-wrapper">
+              <FishingHook/>
+            </div>
+            <h3>Detect Conversion Patterns</h3>
+            <p>
+              Understand the topics, hooks, and formats that consistently trigger DMs and sales.
+            </p>
+          </div>
+
+          <div className="card">
+            <div className="icon-wrapper">
+              <ThumbsUp/>
+            </div>
+            <h3>Filter Vanity Metrics</h3>
+            <p>
+              See where engagement looks impressive, but doesn’t translate to revenue.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="positioning-card">
+          <div className="glow-ball-1"></div>
+          <div className="glow-ball-2"></div>
+          <h3>This Is Not Another AI Generator</h3>
+          <p>
+            Amplora doesn’t create random posts.
+            It shows you what’s already working, so your strategy compounds instead of resetting every week.
+          </p>
+        </div>
+
       </section>
 
-      <section className="features-wrapper py-5">
-      <div className="container">
-        
-        {/* Section 1: Pattern Recognition */}
-        <div className="row align-items-center feature-row mb-5 pb-lg-5">
-          <div className="col-lg-6 order-lg-1 content-box">
-            <span className="badge-modern">Content Intelligence</span>
-            <h2 className="feature-heading">Stop guessing why some posts explode and others flop</h2>
-            <p className="feature-subheading">
-              Amplora analyzes the "DNA" of your content. We don't just show you numbers; 
-              we show you the <strong>specific patterns</strong> from the hook to the 
-              call-to-action that actually trigger audience resonance.
+      {/* Imagine Section */}
+      <div className="imagine-root">
+        <div className="imagine-glow-1" />
+        <div className="imagine-glow-2" />
+
+        <div className="imagine-inner">
+
+          {/* ── HEADER ── */}
+          <div className="imagine-header">
+            <div className="imagine-eyebrow">✦ What Changes With Amplora</div>
+            <ScrollReveal className='move-down-anime'>
+              <h2 className="imagine-heading">
+                Imagine Knowing<br />
+                <span className="accent-blue">Exactly What to Post Next.</span>
+              </h2>
+            </ScrollReveal>
+            <p className="imagine-subheading">
+              No more guessing. No more "post and pray." Just <strong>clear signals</strong> that tell you what's working — and what's quietly killing your pipeline.
             </p>
           </div>
-          <div className="col-lg-6 order-lg-2">
-            <div className="ui-mockup-container shadow-hover">
-              {/* Replace with your specific UI Image */}
-              <img ref={imgRef1} src={postBreakdownUi} alt="Pattern Analysis" className="img-fluid rounded-4 fade-slide-right" />
+
+          {/* ── CARDS ── */}
+          <div className="imagine-cards">
+
+            {/* Card 1 — Track Real Conversions */}
+            <div className="imagine-card c-blue">
+              <div className="card-deco" style={{ background: "#2563EB" }} />
+              <div className="card-icon-wrap">
+                <div className="card-icon icon-bg-blue">✅</div>
+              </div>
+              <div className="card-tag tag-blue">Conversions</div>
+              <div className="card-title">Track What Actually Converts</div>
+              <p className="card-body">
+                Forget likes and saves. See exactly <strong>which posts drive profile visits with buying intent</strong> — and which ones just inflate your vanity numbers.
+              </p>
+              <div className="card-result">
+                <div className="result-dot rdot-blue" />
+                <span className="result-text">"Reel #12 brought 3 discovery call bookings this week."</span>
+              </div>
+            </div>
+
+            {/* Card 2 — Understand What Works (offset) */}
+            <div className="imagine-card c-purple card-mid">
+              <div className="card-deco" style={{ background: "#7c3aed" }} />
+              <div className="card-icon-wrap">
+                <div className="card-icon icon-bg-purple">💡</div>
+              </div>
+              <div className="card-tag tag-purple">Clarity</div>
+              <div className="card-title">Understand What Your Audience Actually Wants</div>
+              <p className="card-body">
+                Discover which <strong>topics, formats, and hooks</strong> trigger real DMs and conversations — not just passive scrollers who never buy.
+              </p>
+              <div className="card-result">
+                <div className="result-dot rdot-purple" />
+                <span className="result-text">"Personal story posts drive 4× more DMs than tutorials."</span>
+              </div>
+            </div>
+
+            {/* Card 3 — Stop Guessing */}
+            <div className="imagine-card c-blue">
+              <div className="card-deco" style={{ background: "#2563EB" }} />
+              <div className="card-icon-wrap">
+                <div className="card-icon icon-bg-blue">🧭</div>
+              </div>
+              <div className="card-tag tag-blue">Strategy</div>
+              <div className="card-title">Build a Strategy. Not a Posting Habit.</div>
+              <p className="card-body">
+                Stop spinning your wheels with random experiments. <strong>Double down on what converts</strong>, cut what doesn't, and finally build content with a plan behind it.
+              </p>
+              <div className="card-result">
+                <div className="result-dot rdot-blue" />
+                <span className="result-text">"Coaches using Amplora cut posting time by 40% and grew leads."</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* ── BOTTOM STATEMENT ── */}
+          <div className="imagine-statement">
+            <div className="statement-deco-1" />
+            <div className="statement-deco-2" />
+
+            <div className="statement-left">
+              <div className="statement-quote">
+                You don't need to post more.<br />
+                You need to post <span className="sq-accent">with proof.</span>
+              </div>
+              <p className="statement-sub">
+                Amplora turns your content history into a <strong>conversion map</strong> — so every post you make from here is backed by real data, not a gut feeling.
+              </p>
+            </div>
+
+            <div className="statement-right">
+              <button className="statement-cta" onClick={scrollToSection}>
+                Join the Waitlist →
+              </button>
+              <div className="cta-note">Free early access · No credit card</div>
             </div>
           </div>
-        </div>
 
-        {/* Section 2: Conversion Tracking (Reversed) */}
-        <div className="row align-items-center feature-row mb-5 pb-lg-5">
-          <div className="col-lg-6 order-lg-2 content-box ps-lg-5">
-            <span className="badge-modern">Revenue Focus</span>
-            <h2 className="feature-heading">Connect your content directly to your revenue</h2>
-            <p className="feature-subheading">
-              Vanity metrics like likes and shares are lying to you. Amplora tracks the 
-              <strong>Invisible Funnel</strong>, showing you exactly which post led to 
-              that "I'm interested" DM or booked consultation call.
-            </p>
-          </div>
-          <div className="col-lg-6 order-lg-1">
-            <div className="ui-mockup-container shadow-hover">
-              <img ref={imgRef2} src={contentUi} alt="Conversion Tracking" className="img-fluid rounded-4 fade-slide-left" />
-            </div>
-          </div>
         </div>
-
-        {/* Section 3: Predictability */}
-        <div className="row align-items-center feature-row">
-          <div className="col-lg-6 order-lg-1 content-box">
-            <span className="badge-modern">Growth Strategy</span>
-            <h2 className="feature-heading">Make your growth boringly predictable</h2>
-            <p className="feature-subheading">
-              Turn your content strategy from a "hope for the best" hobby into a 
-              <strong> client-generating machine</strong>. Get AI-driven recommendations 
-              on what to post next based on what actually converts for you.
-            </p>
-          </div>
-          <div className="col-lg-6 order-lg-2">
-            <div className="ui-mockup-container shadow-hover">
-              <img ref={imgRef3} src={WhatsWorkingUi} alt="Predictive Analytics" className="img-fluid rounded-4  fade-slide-right" />
-            </div>
-          </div>
-        </div>
-
       </div>
-    </section>
 
-      {/* Waitlist Section */}
-      <section id="waitlist" className=" my-section-spacing mt-2 mt-md-4" style={{maxWidth: '100%', width: "100%"}}>
-        <div className="p-4 p-md-5">
-          {/* Headline + Subheadline */}
-          <div className="text-center mb-4 mb-md-5">
-            <h2 className="mb-2">Only {waitlistMembers} Spots Left to Stop <span  style={{color: "#4F5468"}}> Guessing </span></h2>
+      {/* Early Access Section */}
+      <section className="early-access-section fade-in" style={{maxWidth: "1200px"}}> 
+        <div className='m-0 p-0 text-center'>
+          <div className="access-eyebrow">🤖 GET THE ACCESS NOW</div>
+        </div>
+        <ScrollReveal className='move-down-anime'>
+          <h2><span className="accent-blue">Early Access</span></h2>
+        </ScrollReveal>
+        <p style={{marginBottom: "60px"}}>Join the founding waitlist and shape Amplora from day one.</p>
 
-            <h5 className='d-none d-md-flex'>Get early access to Amplora, behind-the-scenes updates, and a first look at the tools turning content into predictable clients. Launch date sent instantly. Kevvin, Lois + {joinedNumber} coaches already joined - only {waitlistMembers} spots left.</h5>
-            <h5 className='d-flex d-md-none'>Get early access to Amplora. Join coaches turning content into predictable clients. Kevvin, Lois + {joinedNumber} already joined - only {waitlistMembers} spots left.</h5>
-          </div>
-
-          <div className="d-none d-md-flex row bullets-container d-flex justify-content-center align-items-center" style={{maxWidth: "950px", width: "100%", justifySelf: "center"}}> 
+        <div className="mt-5 d-none d-md-flex row bullets-container d-flex justify-content-center align-items-center" style={{maxWidth: "950px", width: "100%", justifySelf: "center"}}> 
 
           <div className="col-3 d-flex  justify-content-center align-items-center">
             <div className="main-bullet-card">
@@ -377,117 +642,49 @@ function WaitlistPage() {
                 </div>
               </div>
           </div>
-
-        </div>
       </section>
 
-      <section id="waitlist-cta" className='waitlist-form-page d-flex justify-content-center align-items-center flex-column text-center'>
-        <h1>Shape Amplora From Day One</h1>
-        <h5>Get early access, private updates, and an invite to the first build session - before Amplora opens publicly.</h5>
-
-        <div className="d-flex justify-content-center align-items-center mt-3 mt-md-4 form-container flex-column">
-          <form onSubmit={handleSubmit} className="form-input d-flex justify-content-center align-items-center" style={{maxWidth: "520px", width: "95%"}}>
+      {/* CTA Section */}
+      <section ref={waitlistSectionRef} className="cta-section fade-in" style={{maxWidth: "1900px"}}>
+        <div className='glow-1'></div>
+        <div className='glow-2'></div>
+        <div className='glow-3'></div>
+        <h2>Shape Amplora from Day One</h2>
+        <p>Get early access, private updates, and an invite to the first build session - before Amplora opens publicly.</p>
+        <div className="d-flex justify-content-center align-items-center" style={{maxWidth: "520px", width: "95%", justifySelf: "center", zIndex: "2"}}>
+          <form onSubmit={handleSubmit} className="form-input d-flex justify-content-center align-items-center " style={{maxWidth: "520px", width: "95%"}}>
             
             {error && <p className="error-text">{error}</p>}
 
             <input type="text" placeholder='Enter email here...' className='waitlist-email-input d-flex d-md-none'
-                value={email} onChange={(e) => {setEmail(e.target.value); setError("");}} required/>
+            value={email} onChange={(e) => {setEmail(e.target.value); setError(""); }} required style={{zIndex: "30"}}/>
 
             <input type="text" placeholder='Enter your email here...' className='waitlist-email-input d-none d-md-flex'
-            value={email} onChange={(e) => {setEmail(e.target.value); setError("");}} required/>
+            value={email} onChange={(e) => {setEmail(e.target.value); setError(""); }} required style={{zIndex: "30"}}/>
 
-            <button className='join-btn' type="submit">
+            <button className='join-btn' type="submit" style={{zIndex: "2", position: "relative"}}>
               {isSubmitting ? "Submitting..." : "Join Now"}
             </button>
           </form>
-
-          <div className="d-flex placeholder-profile mt-4 align-items-center gap-2 ms-2 ms-md-0 mb-4">
-            <div className="" style={{minWidth: "57px"}}>
-              <img src={Kevvin} alt="" className='img-1'/>
-              <img src={Lois} alt="" className='img-2'/>
-            </div>
-            <h6>Kevvin, Lois + {joinedNumber} more joined · {waitlistMembers} spots left</h6>
-          </div>
-          
         </div>
-
-          <div className="cta-highlighted-container text-center mt-md-1 mt-1">
-            <div className='sharing-titles-section'>
-              <h6>Share with your friends to get Amplora launched faster - and help shape the product you’ll love.</h6>
-              <p>It only takes a second - your support makes all the difference.</p>
+        {/* Social Proof */}
+          <div className="social-proof d-flex justify-content-center">
+            <div className="avatars">
+              <div className="d-flex placeholder-profile mt-3 align-items-center gap-2 justify-content-center">
+                <div className="" style={{minWidth: "57px"}}>
+                  <img src={Kevvin} alt="" className='img-1'/>
+                  <img src={Lois} alt="" className='img-2'/>
+                </div>
+              </div>
             </div>
-            <div className="d-inline-flex gap-3">
-              <a
-                  href={`https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Share on WhatsApp"
-                  className="social-icon"
-              >
-                <button type="button" className="sharing-btn"><FaWhatsapp className='share-icon'/></button>
-              </a>
-              
-              <a
-                  onClick={handleInstagramShare}
-                  aria-label="Share on Instagram"
-                  className="social-icon"
-                >
-                <button type="button" className="sharing-btn"><FaInstagram className='share-icon'/></button>
-              </a>
-
-              <a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Share on Facebook"
-                  className="social-icon"
-                >
-                <button type="button" className="sharing-btn"><FaFacebook className='share-icon'/></button>
-              </a>
-
-              <a
-                  href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Share on Twitter"
-                  className="social-icon"
-                >
-                <button type="button" className="sharing-btn"><FaTwitter className='share-icon'/></button>
-              </a>
-              
-              <a
-                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareText}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Share on LinkedIn"
-                  className="social-icon"
-                >
-                <button type="button" className="sharing-btn"><FaLinkedin className='share-icon'/></button>
-              </a>
+            <div className="proof-text">
+              <div className="stars">★★★★★</div>
+              <div style={{color: "white"}}><strong style={{color: "white"}}>{joinedNumber}+ coaches</strong> already on the waitlist</div>
             </div>
           </div>
+          <h1 className='bottom-brand-text'>amplora</h1>
       </section>
-
-      {/* Footer */}
-      <footer id="contact" className="container py-5">
-        <div className="">
-          <h5 className="fw-bold text-black mb-2">Amplora</h5>
-          <p className="text-muted">
-            A product by Nxtdev. Built for creators who value clarity over guesswork.
-          </p>
-        </div>
-        <div className="text-muted small mt-3">© 2026. All rights reserved.</div>
-      </footer>
-
-      {showSuccess && (
-        <div className="success-toast">
-          <strong>You’re on the waitlist 🎉</strong>
-          <span>We’ll email you early access and updates.</span>
-          <p>Emails will come from: <b>info@bininstructions.com</b></p>
-        </div>
-      )}
-
-    </div>
+    </main>
     </>
   )
 }
